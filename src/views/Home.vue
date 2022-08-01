@@ -2,69 +2,100 @@
  * @Description: 
  * @Author: Sun yinge
  * @Date: 2022-07-28 15:04:44
- * @LastEditTime: 2022-08-01 15:40:53
+ * @LastEditTime: 2022-08-01 17:37:07
  * @LastEditors: Sun yinge
 -->
 <template>
-  <div class="home">
-    {{msg}} ===> {{msgChange}}
-    <hr/>
-    {{name}} {{age}}
-    <button @click="btn">按钮</button>
+  <div>
+    <input type="" name="" v-model="msg">
+    <input type="" name="" v-model="str">
   </div>
 </template>
 
-<script setup>
-import { computed } from "@vue/runtime-core"
+<!-- <script setup>
+import { reactive } from "@vue/reactivity";
 
-let msg = ref('这是ref相应数据')
-let obj = reactive({
-  name: '张三',
-  age: 18
+const obj = reactive({
+  a:1
 })
 
-// let msgChange = computed(()=>{
-//   return msg.value.slice(1,3);
-// })
-let msgChange = computed({
-  get() {
-    return msg.value.slice(1,3);
-  },
-  set(val) {
-    console.log('设置了', val)
+watch(obj, (newVal, oldVal)=>{
+  console.log( newVal, oldVal )
+})
+
+</script> -->
+<script>
+import { reactive, watch } from '@vue/runtime-core';
+export default {
+  setup(){
+
+    let msg = ref('这是一个数据');
+    let str = ref('这是str');
+    let obj = reactive({
+      a:1,
+      arr:['a','b','c']
+    })
+
+    watch(obj, (newVal, oldVal)=>{
+      console.log( newVal, oldVal )
+    },{
+      immediate:true
+    })
+
+    // watch(msg, (newVal, oldVal)=>{
+    //   console.log( newVal, oldVal )
+    // },{
+    //   immediate:true
+    // })
+
+    // watch(str, (newVal, oldVal) => {
+    //   console.log( newVal, oldVal )
+    // },{
+    //   immediate:true
+    // })
+
+    watch([msg,str], (newVal, oldVal)=>{
+      console.log( newVal, oldVal )
+    },{
+      immediate:true
+    })
+
+    return {
+      msg,
+      str
+    }
+
   }
-})
-
-let {name,age} = toRefs(obj)
-const btn = () => {
-  msgChange.value = 111111
-  console.log(msgChange)
-  // name.value = '李四'
-  // msg.value = '你好修改了'
 }
 </script>
-<!-- <script>
-import { reactive, toRefs, computed } from '@vue/reactivity';
+
+<!-- <script type="text/javascript">
 export default {
-  name: "Home",
-  setup() {
-    let obj = reactive({
-      name:'张三',
-      age:18
-    })
-    const btn = ()=>{
-      obj.name = '李四'
-    }
-    onMounted(()=>{
-      console.log('onMounted')
-    })
+  data() {
     return {
-      ...toRefs(obj),
-      btn
+      msg: '这是一个数据',
+      obj:{
+        a:1,
+      }
     }
   },
-  mounted() {
-    console.log('mounted')
+  watch:{
+    msg(newVal, oldVal) {
+      console.log(newVal, oldVal)
+    },
+    msg:{
+      handler(newVal, oldVal){
+        console.log( newVal, oldVal )
+      },
+      immediate:true
+    },
+    obj:{
+      handler(newVal, oldVal){
+        console.log( newVal, oldVal )
+      },
+      immediate:true,
+      deep: true
+    },
   }
-};
+}
 </script> -->
