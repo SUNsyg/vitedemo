@@ -2,34 +2,31 @@
  * @Description: 
  * @Author: Sun yinge
  * @Date: 2022-07-28 15:04:44
- * @LastEditTime: 2022-08-02 11:21:37
+ * @LastEditTime: 2022-08-02 15:25:46
  * @LastEditors: Sun yinge
 -->
 <template>
   <div>
-    <router-link to="/about">关于我们</router-link>
-    <button @click="go">关于我们</button>
+    <List :msg="msg"></List>
   </div>
 </template>
 
-<script type="text/javascript">
-// import { useRouter, useRoute } from 'vue-router'
+<script setup>
+import List from '../components/List.vue'
+let msg = ref('这是父传过去的数据')
+</script>
+
+<!-- <script type="text/javascript">
+import List from '../components/List.vue'
 
 export default {
-  setup() {
-    console.log(this)
-    let useR = new useRouter;
-    let go = ()=>{
-      useR.push('/about/1')
-      console.log('useRouter', useR, new useRouter())
-      console.log(useRoute)
+  data() {
+    return {
+      msg: '这是传过去的数据'
     }
-    return { go }
   },
-  // methods: {
-  //   go() {
-  //     this.$router.push('/about')
-  //   }
-  // }
+  components: {
+    List
+  }
 }
-</script>
+</script> -->
