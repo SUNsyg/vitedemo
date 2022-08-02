@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Sun yinge
  * @Date: 2022-07-28 15:04:44
- * @LastEditTime: 2022-07-28 15:20:01
+ * @LastEditTime: 2022-08-02 11:21:32
  * @LastEditors: Sun yinge
  */
 import { createRouter, createWebHistory } from "vue-router";
@@ -15,7 +15,7 @@ const routes = [
     component: Home,
   },
   {
-    path: "/about",
+    path: "/about/:id",
     name: "About",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -29,5 +29,10 @@ const router = createRouter({
   history: createWebHistory('/'),
   routes,
 });
+
+// router.beforeEach((news, old, next) => {
+//   console.log(news, old, next)
+//   next()
+// })
 
 export default router;
