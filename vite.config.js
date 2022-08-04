@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Sun yinge
  * @Date: 2022-08-01 14:03:20
- * @LastEditTime: 2022-08-01 14:18:27
+ * @LastEditTime: 2022-08-04 16:31:03
  * @LastEditors: Sun yinge
  */
 import { defineConfig } from 'vite'
