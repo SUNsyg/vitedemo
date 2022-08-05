@@ -2,19 +2,19 @@
  * @Description: 
  * @Author: Sun yinge
  * @Date: 2022-08-04 15:44:51
- * @LastEditTime: 2022-08-04 16:51:04
+ * @LastEditTime: 2022-08-05 15:58:02
  * @LastEditors: Sun yinge
 -->
 <template>
     <div>A组件</div>
-    {{list}}
+    {{ num }}
+    <button @click="favBtn">
+        {{ fav ? '收藏中...' : '收藏' }}
+    </button>
 </template>
 
 <script setup>
-import axios from 'axios';
-
-const list = ref([]);
-
-let res = await axios.get('http://testapi.xuexiluxian.cn/api/slider/getSliders');
-list.value = res.data.data.list;
+import mixin from '../../mixins/mixin.js'
+let { num, fav, favBtn } = mixin();
+console.log(mixin)
 </script>
