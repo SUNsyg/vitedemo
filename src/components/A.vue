@@ -2,19 +2,19 @@
  * @Description: 
  * @Author: Sun yinge
  * @Date: 2022-08-04 15:44:51
- * @LastEditTime: 2022-08-05 15:58:02
+ * @LastEditTime: 2022-08-08 14:00:30
  * @LastEditors: Sun yinge
 -->
 <template>
-    <div>A组件</div>
-    {{ num }}
-    <button @click="favBtn">
-        {{ fav ? '收藏中...' : '收藏' }}
-    </button>
+    <div>
+        <h1>A组件</h1>
+        {{aNum}}
+        <hr />
+        <B></B>
+    </div>
 </template>
 
 <script setup>
-import mixin from '../../mixins/mixin.js'
-let { num, fav, favBtn } = mixin();
-console.log(mixin)
+import B from './B.vue';
+const aNum = inject('changeNum');
 </script>
