@@ -2,40 +2,35 @@
  * @Description: 
  * @Author: Sun yinge
  * @Date: 2022-08-04 15:44:51
- * @LastEditTime: 2022-08-09 16:02:09
+ * @LastEditTime: 2022-08-10 14:46:53
  * @LastEditors: Sun yinge
 -->
 <template>
     <div>
-        {{changeNum}}
-        {{changeNum}}
-        {{changeNum}}
         <h1>A组件</h1>
-        {{num}}
-        {{name}}
-        <button @click="changeName">修改</button>
-        <button @click="btn">+=操作</button>
+        {{age}} {{nickName}}
+        <hr/>
+        getters: {{changeAge}}
+        <hr/>
+        actions: <button @click="btn">+=</button>
+        <hr/>
+        shopList: {{ shopList }}
     </div>
 </template>
 
 <script setup>
 import { storeToRefs } from 'pinia';
-import { useStore } from '../store'
-const store = useStore();
+import { user } from '../store/user'
+import { shop } from '../store/shop'
+const userStore = user();
+const shopStore = shop();
 
-let {num,name,changeNum} = storeToRefs(store);
-let changeName = () => {
-    // name.value = '李四'
-    // num.value = 10
-    
-    // 批量更新
-    store.$patch(state=>{
-		state.num++;
-        state.name='李四'
-	})
+let { age, nickName, changeAge } = storeToRefs(userStore);
+let {shopList} = storeToRefs(shopStore);
+console.log(shopList.value)
+const btn = ()=>{
+    userStore.upAge(100)
 }
 
-const btn = () => {
-    store.upNum(200)
-}
+console.log(userStore)
 </script>
