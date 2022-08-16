@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Sun yinge
  * @Date: 2022-08-01 14:03:20
- * @LastEditTime: 2022-08-04 16:31:03
+ * @LastEditTime: 2022-08-16 14:32:51
  * @LastEditors: Sun yinge
  */
 import { defineConfig } from 'vite'
@@ -17,5 +17,10 @@ export default defineConfig({
     AutoImport({
       imports:['vue','vue-router']//自动导入vue和vue-router相关函数
     })
-  ]
+  ],
+  server:{
+		proxy:{
+			'/api':'http://testapi.xuexiluxian.cn'
+		}
+	}
 })
